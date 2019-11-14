@@ -14,8 +14,7 @@ export default class App extends React.Component<IProps,IState> {
 	public addNewAtask(task:ITask):void{
 			this.setState({
 				tasks:[...this.state.tasks,task]
-			});
-			console.log(this.state)
+			},()=>console.log("ESTADO ACTUALIZADO",this.state));
 	}
 	public render() {
 		return (
