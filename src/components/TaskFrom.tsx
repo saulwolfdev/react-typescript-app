@@ -19,6 +19,7 @@ export default class TaskForm extends React.Component<TaskFormProps, any> {
 	}
 	public handleNewTask(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
+	
 		const newTask: ITask = {
 			id: this.getCurrentTimeStamp(),
 			title: this.state.title,
@@ -27,7 +28,7 @@ export default class TaskForm extends React.Component<TaskFormProps, any> {
 		}
 
 		this.props.addNewAtask(newTask);
-
+		this.setState({title:"",description:""})
 		console.log(newTask);
 		console.log("this.handleNewTask===OK")
 	}
@@ -53,12 +54,15 @@ export default class TaskForm extends React.Component<TaskFormProps, any> {
 				<input
 					name="title"
 					placeholder="task"
+					value={this.state.title}
 					onChange={e => this.handleInputChange(e)} />
 				<textarea
 					onChange={e => this.handleInputChange(e)}
 					name="description"
+					value={this.state.description}
 					placeholder="description"></textarea>
-				<button type="submit">send</button>
+				<button 
+				type="submit">send</button>
 			</form>
 		);
 	}
